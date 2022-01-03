@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:notevia/controller/user_connection_provider.dart';
-import 'package:notevia/view/components/buttons/gradient_button.dart';
+import 'package:notevia/view/components/buttons/login_register_buttons.dart';
 import 'package:notevia/view/components/text_fields/shaped_text_field.dart';
+import 'package:notevia/view/ui/login_page.dart';
 import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -38,9 +39,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       color: Colors.blue.shade800,
                     ),
                     const Text(
-                      'Register',
+                      'NoteVia.',
                       style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
                     ),
@@ -66,26 +67,11 @@ class _RegisterPageState extends State<RegisterPage> {
                 Padding(
                   padding: const EdgeInsets.only(
                       left: 30, right: 30, top: 20, bottom: 20),
-                  child: TextField(
+                  child: ShapedTextField(
                     controller: userConnectionProvider.usernameController,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white70,
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(15)),
-                      labelText: 'Username',
-                      labelStyle: TextStyle(color: Colors.blue.shade800),
-                      hintText: 'Enter your username',
-                      hintStyle: const TextStyle(color: Colors.grey),
-                      suffixIcon: Icon(
-                        Icons.password,
-                        color: Colors.blue.shade800,
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue.shade800),
-                          borderRadius: BorderRadius.circular(15)),
-                    ),
+                    hint: 'Enter your username',
+                    icon: Icons.perm_identity,
+                    label: 'Username',
                   ),
                 ),
                 Padding(
@@ -123,28 +109,30 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
-                GradientButton(
-                    onPressed: () {
-                      userConnectionProvider.signUpRequest();
-                    },
-                    text: 'Sign Up'),
+                GradientButtons(
+                  onPress: () {
+                    userConnectionProvider.signUpRequest();
+                  },
+                  text: 'Sign up now',
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 100),
+                  padding: const EdgeInsets.only(top: 80),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Have any account?',
+                        'Have an account?',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          'Sign in',
-                          style: TextStyle(
-                              color: Colors.blue.shade800,
-                              fontWeight: FontWeight.bold),
-                        ),
+                      GestureDetectorButtons(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()),
+                          );
+                        },
+                        text: 'Log in',
                       ),
                     ],
                   ),

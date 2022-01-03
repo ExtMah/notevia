@@ -1,5 +1,8 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
+import 'package:notevia/view/components/buttons/welcome_page_buttons.dart';
+import 'package:notevia/view/ui/login_page.dart';
+import 'package:notevia/view/ui/register_page.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -22,9 +25,6 @@ class WelcomePage extends StatelessWidget {
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.5,
                   decoration: BoxDecoration(
-                    // image: DecorationImage(
-                    //     image: AssetImage('assets/images/splash_bg.jpg'),
-                    //     fit: BoxFit.cover),
                     gradient: LinearGradient(colors: [
                       Colors.blue.shade900,
                       Colors.blue.shade800,
@@ -34,7 +34,7 @@ class WelcomePage extends StatelessWidget {
                   child: Center(
                     child: SvgPicture.asset(
                       'assets/svg/undraw_calculator.svg',
-                      semanticsLabel: "Asgar",
+                      semanticsLabel: "Mhmd",
                       height: MediaQuery.of(context).size.height * 0.4,
                     ),
                   ),
@@ -88,35 +88,39 @@ class WelcomePage extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          MaterialButton(
-                            elevation: 0,
-                            minWidth: MediaQuery.of(context).size.width * .40,
-                            shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(45))),
-                            height: 50,
-                            color: Colors.white,
-                            onPressed: () {},
-                            child: const Text(
-                              'Register',
-                            ),
-                          ),
-                          MaterialButton(
-                            elevation: 0,
-                            height: 50,
-                            minWidth: MediaQuery.of(context).size.width * .40,
+                          WelcomePageButtons(
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.only(
-                                // topRight: Radius.circular(12),
+                                topLeft: Radius.circular(45),
+                              ),
+                            ),
+                            onPress: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const RegisterPage()),
+                              );
+                            },
+                            text: 'Sign up',
+                            color: Colors.white,
+                            textStyle: const TextStyle(color: Colors.black),
+                          ),
+                          WelcomePageButtons(
+                            onPress: () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginPage()),
+                              );
+                            },
+                            text: 'Log In',
+                            textStyle: const TextStyle(color: Colors.white),
+                            color: Colors.blue.shade800,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
                                 bottomRight: Radius.circular(45),
                               ),
                             ),
-                            onPressed: () {},
-                            child: const Text(
-                              'Sign In',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            color: Colors.blue.shade800,
                           ),
                         ],
                       ),

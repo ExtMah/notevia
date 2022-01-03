@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class GradientButton extends StatelessWidget {
-  final VoidCallback onPressed;
+class GradientButtons extends StatelessWidget {
+  final VoidCallback onPress;
   final String text;
 
-  const GradientButton({Key? key, required this.onPressed, required this.text})
+  const GradientButtons({Key? key, required this.onPress, required this.text})
       : super(key: key);
 
   @override
@@ -30,7 +30,7 @@ class GradientButton extends StatelessWidget {
           height: 65,
           minWidth: 330,
           // color: const Color(0xFF877ef5),
-          onPressed: onPressed,
+          onPressed: onPress,
           child: Text(
             text,
             style: const TextStyle(
@@ -38,6 +38,29 @@ class GradientButton extends StatelessWidget {
               fontSize: 25,
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class GestureDetectorButtons extends StatelessWidget {
+  final VoidCallback onTap;
+  final String text;
+
+  const GestureDetectorButtons(
+      {Key? key, required this.onTap, required this.text})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Text(
+        text,
+        style: TextStyle(
+          color: Colors.blue.shade800,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

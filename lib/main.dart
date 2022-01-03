@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notevia/controller/user_connection_provider.dart';
 import 'package:notevia/controller/user_data_provider.dart';
-import 'package:notevia/view/ui/login_page.dart';
-import 'package:notevia/view/ui/register_page.dart';
 import 'package:notevia/view/ui/splash_page.dart';
-import 'package:notevia/view/ui/welcome_page.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -38,7 +35,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'Poppins',
                 primarySwatch: Colors.blue,
               ),
-              home: const RegisterPage(),
+              home: const SplashPage(),
             ),
           );
         }

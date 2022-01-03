@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:notevia/controller/user_connection_provider.dart';
-import 'package:notevia/view/components/buttons/gradient_button.dart';
+import 'package:notevia/view/components/buttons/login_register_buttons.dart';
+import 'package:notevia/view/ui/register_page.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -57,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                 const Padding(
                   padding: EdgeInsets.only(top: 10),
                   child: Text(
-                    'Sign in to continue',
+                    'Log in to continue',
                     style: TextStyle(fontSize: 20, color: Colors.black),
                     textAlign: TextAlign.center,
                   ),
@@ -78,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                       hintText: 'Enter your username or Email',
                       hintStyle: const TextStyle(color: Colors.grey),
                       suffixIcon: Icon(
-                        Icons.password,
+                        Icons.perm_identity,
                         color: Colors.blue.shade800,
                       ),
                       focusedBorder: OutlineInputBorder(
@@ -113,7 +114,9 @@ class _LoginPageState extends State<LoginPage> {
                           _obscureText
                               ? Icons.visibility
                               : Icons.visibility_off,
-                          color: Colors.blue.shade800,
+                          color: _obscureText == true
+                              ? Colors.blue.shade800
+                              : Colors.grey,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
@@ -122,25 +125,20 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                GradientButton(
-                    onPressed: () {
+                GradientButtons(
+                    onPress: () {
                       userConnectionProvider.loginRequest();
                     },
-                    text: 'Sign in'),
+                    text: 'Log in'),
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      GestureDetector(
+                      GestureDetectorButtons(
                         onTap: () {},
-                        child: Text(
-                          'Forgot password?',
-                          style: TextStyle(
-                              color: Colors.blue.shade800,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
+                        text: 'Forgot password ?',
+                      )
                     ],
                   ),
                 ),
@@ -150,17 +148,18 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        'Don\'t have any account?',
+                        'Don\'t have an account?',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Text(
-                          'Register',
-                          style: TextStyle(
-                              color: Colors.blue.shade800,
-                              fontWeight: FontWeight.bold),
-                        ),
+                      GestureDetectorButtons(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const RegisterPage()),
+                          );
+                        },
+                        text: 'Sign up',
                       ),
                     ],
                   ),

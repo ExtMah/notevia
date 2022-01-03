@@ -17,12 +17,10 @@ class UserConnectionProvider extends ChangeNotifier {
   Future loginRequest() async {
     loading = true;
     notifyListeners();
-    Response response = await post(
-        Uri.parse('https://phloxco.ir/notevia/veiw/login.php'),
-        body: {
-          'name': usernameController.text,
-          'password': passwordController.text,
-        });
+    Response response = await post(Links().login, body: {
+      'name': usernameController.text,
+      'password': passwordController.text,
+    });
     print(response.body);
     Map<String, dynamic> body = json.decode(response.body);
     if (body['result'] == true) {

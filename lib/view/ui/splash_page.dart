@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:notevia/controller/user_data_provider.dart';
+import 'package:notevia/view/ui/welcome_page.dart';
 import 'package:provider/provider.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-
-import 'login_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -29,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                builder: (context) => const LoginPage(),
+                builder: (context) => const WelcomePage(),
               ));
         });
       }
@@ -47,14 +46,6 @@ class _SplashPageState extends State<SplashPage> {
             fit: BoxFit.cover,
           ),
           Center(
-            // child: Text(
-            //   'Note\nVia .',
-            //   style: TextStyle(
-            //       color: Colors.white,
-            //       fontSize: 60,
-            //       fontFamily: 'PoppinsBold',
-            //       height: 1),
-            // ),
             child: SizedBox(
               child: DefaultTextStyle(
                 textAlign: TextAlign.center,
