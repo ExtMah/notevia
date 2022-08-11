@@ -21,7 +21,7 @@ class WelcomePageButtons extends StatelessWidget {
     return MaterialButton(
       elevation: 0,
       minWidth: MediaQuery.of(context).size.width * .40,
-      height: 50,
+      height: 55,
       shape: shape,
       onPressed: onPress,
       color: color,

@@ -14,28 +14,32 @@ class GradientButtons extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(35),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
             colors: [
-              Colors.blue.shade900,
-              Colors.blue.shade700,
-              Colors.blue,
+              // Colors.blue.shade900,
+              // Colors.blue.shade700,
+              // Colors.blue,
+              Color(0xff196991),
+              Color(0xff196991),
             ],
           ),
         ),
         child: MaterialButton(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-          height: 65,
-          minWidth: 330,
+          // height: 65,
+          // minWidth: 330,
+          height: 56,
+          minWidth: 200,
           // color: const Color(0xFF877ef5),
           onPressed: onPress,
           child: Text(
             text,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 25,
+              fontSize: 22.5,
             ),
           ),
         ),
@@ -58,8 +62,9 @@ class GestureDetectorButtons extends StatelessWidget {
       onTap: onTap,
       child: Text(
         text,
-        style: TextStyle(
-          color: Colors.blue.shade800,
+        style: const TextStyle(
+          // color: Colors.blue.shade800,
+          color: Color(0xFF1efdff),
           fontWeight: FontWeight.bold,
         ),
       ),
